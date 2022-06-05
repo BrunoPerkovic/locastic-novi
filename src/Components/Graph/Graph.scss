@@ -1,33 +1,24 @@
 .graph {
-	margin-top: 40px;
-	&__day {
-		font-size: 20px;
-		margin-left: 20px;
-		font-weight: 700;
-		margin-bottom: 20px;
-	}
+  &__day {
+    margin-left: 15px;
+    font-weight: 700;
+  }
 
-	&__image {
-		img {
-			width: 100%;
-		}
-	}
+  &__image {
+    img {
+      width: 100%;
+    }
+  }
 
-	&__time {
-		ul {
-			display: flex;
-			justify-content: space-between;
-			list-style-type: none;
-			margin-bottom: 10px;
-			margin-left: 10px;
-			margin-right: 10px;
-			font-size: small;
-		}
-		li {
-			color: #aaa;
-			font-weight: bold;
-			font-size: 14px;
-			margin-top: 8px;
-		}
-	}
+  &__time {
+    ul {
+      display: flex;
+      justify-content: space-between;
+      list-style-type: none;
+      margin-bottom: 10px;
+      margin-left: 10px;
+      margin-right: 10px;
+      font-size: small;
+    }
+  }
 }

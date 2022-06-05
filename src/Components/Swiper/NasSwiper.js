@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import WeatherCard from "../WeatherCard/WeatherCard";
+import Conditions from "../Conditions/Conditions";
+import Card from "../Card/Card";
+import ViewStats from "../ViewStats/ViewStats";
 import { useMediaQuery } from "react-responsive";
+import "./NasSwiper.scss";
 import WeatherIcon from "../WeatherIcon/WeatherIcon";
 
 import axios from "axios";
@@ -31,13 +34,13 @@ const dayNames = ["Ned", "Pon", "Uto", "Sri", "Čet", "Pet", "Sub"];
 
 //todo: objekt s key value par {opis1: ikona1, opis2: ikona2,...}
 /* function setWeatherIcons(value) {
-	if (value === "clear sky") {
-		return <WeatherIcon weatherIcon={sunny} />;
-	} else if (value === "broken clouds") {
-		return <WeatherIcon weatherIcon={cloudy} />;
-	} else if (value === "overcast clouds") {
-		return <WeatherIcon weatherIcon={overheat} />;
-	}
+  if (value === "clear sky") {
+    return <WeatherIcon weatherIcon={sunny} />;
+  } else if (value === "broken clouds") {
+    return <WeatherIcon weatherIcon={cloudy} />;
+  } else if (value === "overcast clouds") {
+    return <WeatherIcon weatherIcon={overheat} />;
+  }
 } */
 
 const weatherObject = {
@@ -173,7 +176,7 @@ const NasSwiper = () => {
 	return (
 		<div className="Swiper">
 			<Swiper
-				slidesPerView={isDesktopOrLaptop ? 6 : 1.8}
+				slidesPerView={isDesktopOrLaptop ? 6 : 2}
 				centeredSlides={true}
 				onSlideChange={() => console.log("slide change")}
 				onSwiper={(swiper) => console.log(swiper)}
@@ -197,20 +200,21 @@ const NasSwiper = () => {
 							i
 						) => (
 							<SwiperSlide key={location}>
+								{/* {setWeatherIcons(currentClouds)} */}
 								<WeatherIcon weatherIcon={weatherObject[currentClouds]} />
-								<WeatherCard
+								<Card
 									{...{
 										location,
 										currentTemperature,
 										currentWinds,
 										currentClouds,
 										timeAndDay,
-										currentPressure,
-										windSpeed,
-										humidityPercentage,
 									}}
 								/>
-
+								<ViewStats />
+								<Conditions
+									{...{ currentPressure, windSpeed, humidityPercentage }}
+								/>
 							</SwiperSlide>
 						)
 					)}
